@@ -15,7 +15,6 @@ app.get("/", (req, res) => {
 
 
       MercadoPago.payment.search({
-        //qs: filters
       }).then(function (data) {
         res.send(data);
       }).catch(function (error) {
@@ -26,13 +25,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pagar",async (req, res) => {
-
-    // Pagamentos
-
-    // id // codigo // pagador // status
-    // 1 // 1593163315787 // victordevtb@gmail.com  // Não foi pago
-    // 2 //  1593163315782 // victordevtb2@gmail.com // Pago
-
     var id = "" + Date.now();
     var emailDoPagador = "victordevtb@outlook.com";
 
@@ -54,7 +46,6 @@ app.get("/pagar",async (req, res) => {
 
     try{
         var pagamento = await MercadoPago.preferences.create(dados);
-        //Banco.SalvarPagamento({id: id, pagador: emailDoPagador});
         return res.redirect(pagamento.body.init_point);
     }catch(err){
         return res.send(err.message);
