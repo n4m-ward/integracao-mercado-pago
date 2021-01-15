@@ -2,6 +2,7 @@ const express = require("express");
 const MercadoPago = require("mercadopago"); 
 const { setTimeout } = require("timers");
 const app = express();
+const port = process.env.PORT || 3333;
 
 MercadoPago.configure({
     sandbox: true,
@@ -90,7 +91,7 @@ app.post("/not",(req, res) => {
 });
 
 
-app.listen(80,(req, res) => {
+app.listen(port,(req, res) => {
 
     console.log("Servidor rodando!");
 
